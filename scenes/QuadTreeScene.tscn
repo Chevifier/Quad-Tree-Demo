@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=3 uid="uid://dybv4foog000d"]
+
+[ext_resource type="Script" path="res://scripts/QuadTreeScene.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bjqio2pwu8y54" path="res://scenes/Quad.tscn" id="2_xvsua"]
+[ext_resource type="Script" path="res://scenes/draw_manager.gd" id="3_1m1eh"]
+
+[node name="QuadTreeScene" type="Node2D"]
+script = ExtResource("1")
+qtree = ExtResource("2_xvsua")
+
+[node name="draw_manager" type="Node2D" parent="."]
+script = ExtResource("3_1m1eh")
+
+[node name="fps" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 14.0
+text = "FPS: 0"
+
+[node name="points" type="Label" parent="."]
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 32.0
+text = "Points_Highlighted: 0 
+Total Points: 0"
+
+[node name="label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 68.0
+offset_right = 75.0
+offset_bottom = 82.0
+text = "Search Size"
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 89.0
+offset_top = 39.0
+offset_right = 245.0
+offset_bottom = 108.0
+min_value = 10.0
+max_value = 500.0
+value = 10.0
+rounded = true
+
+[node name="label2" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 147.0
+offset_right = 78.0
+offset_bottom = 161.0
+text = "Cell Capacity"
+
+[node name="cellcap_slider" type="HSlider" parent="."]
+offset_left = 92.0
+offset_top = 118.0
+offset_right = 248.0
+offset_bottom = 187.0
+min_value = 4.0
+value = 10.0
+rounded = true
+
+[node name="cap" type="Label" parent="."]
+offset_left = 254.0
+offset_top = 145.0
+offset_right = 335.0
+offset_bottom = 159.0
+text = "0"
+
+[node name="drag_mode" type="CheckBox" parent="."]
+offset_left = 15.0
+offset_top = 102.0
+offset_right = 112.0
+offset_bottom = 126.0
+text = "Drag Mode"
+
+[node name="spawn_5k" type="Button" parent="."]
+offset_left = 9.0
+offset_top = 185.0
+offset_right = 129.0
+offset_bottom = 205.0
+text = "Spawn 5k"
+
+[node name="spawn_10k" type="Button" parent="."]
+offset_left = 139.0
+offset_top = 184.0
+offset_right = 259.0
+offset_bottom = 204.0
+text = "Spawn 10k"
+
+[node name="spawn_50k" type="Button" parent="."]
+offset_left = 140.0
+offset_top = 215.0
+offset_right = 260.0
+offset_bottom = 235.0
+text = "Spawn 50k"
+
+[node name="Clear_reset" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 215.0
+offset_right = 128.0
+offset_bottom = 235.0
+text = "Clear_Reset"
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="cellcap_slider" to="." method="_on_cellcap_slider_value_changed"]
+[connection signal="toggled" from="drag_mode" to="." method="_on_drag_mode_toggled"]
+[connection signal="pressed" from="spawn_5k" to="." method="_on_spawn_5k_pressed"]
+[connection signal="pressed" from="spawn_10k" to="." method="_on_spawn_10k_pressed"]
+[connection signal="pressed" from="spawn_50k" to="." method="_on_spawn_50k_pressed"]
+[connection signal="pressed" from="Clear_reset" to="." method="_on_Clear_reset_pressed"]
